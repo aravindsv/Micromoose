@@ -1,10 +1,10 @@
 ..\obj\delay.o: ..\user_Libraries\src\delay.c
 ..\obj\delay.o: ..\ST_Libraries\startup\stm32f4xx.h
-..\obj\delay.o: C:\Keil\ARM\CMSIS\Include\core_cm4.h
-..\obj\delay.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
-..\obj\delay.o: C:\Keil\ARM\CMSIS\Include\core_cmInstr.h
-..\obj\delay.o: C:\Keil\ARM\CMSIS\Include\core_cmFunc.h
-..\obj\delay.o: C:\Keil\ARM\CMSIS\Include\core_cm4_simd.h
+..\obj\delay.o: C:\Keil_v5\ARM\CMSIS\Include\core_cm4.h
+..\obj\delay.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\delay.o: C:\Keil_v5\ARM\CMSIS\Include\core_cmInstr.h
+..\obj\delay.o: C:\Keil_v5\ARM\CMSIS\Include\core_cmFunc.h
+..\obj\delay.o: C:\Keil_v5\ARM\CMSIS\Include\core_cm4_simd.h
 ..\obj\delay.o: ..\ST_Libraries\startup\system_stm32f4xx.h
 ..\obj\delay.o: ..\user\stm32f4xx_conf.h
 ..\obj\delay.o: ..\ST_Libraries\inc\stm32f4xx_adc.h
@@ -35,4 +35,4 @@
 ..\obj\delay.o: ..\ST_Libraries\inc\stm32f4xx_wwdg.h
 ..\obj\delay.o: ..\ST_Libraries\inc\misc.h
 ..\obj\delay.o: ..\user_Libraries\inc\delay.h
-..\obj\delay.o: C:\Keil\ARM\ARMCC\bin\..\include\stdbool.h
+..\obj\delay.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h

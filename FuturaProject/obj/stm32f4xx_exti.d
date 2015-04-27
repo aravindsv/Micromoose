@@ -1,11 +1,11 @@
 ..\obj\stm32f4xx_exti.o: ..\ST_Libraries\src\stm32f4xx_exti.c
 ..\obj\stm32f4xx_exti.o: ..\ST_Libraries\inc\stm32f4xx_exti.h
 ..\obj\stm32f4xx_exti.o: ..\ST_Libraries\startup\stm32f4xx.h
-..\obj\stm32f4xx_exti.o: C:\Keil\ARM\CMSIS\Include\core_cm4.h
-..\obj\stm32f4xx_exti.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
-..\obj\stm32f4xx_exti.o: C:\Keil\ARM\CMSIS\Include\core_cmInstr.h
-..\obj\stm32f4xx_exti.o: C:\Keil\ARM\CMSIS\Include\core_cmFunc.h
-..\obj\stm32f4xx_exti.o: C:\Keil\ARM\CMSIS\Include\core_cm4_simd.h
+..\obj\stm32f4xx_exti.o: C:\Keil_v5\ARM\CMSIS\Include\core_cm4.h
+..\obj\stm32f4xx_exti.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\stm32f4xx_exti.o: C:\Keil_v5\ARM\CMSIS\Include\core_cmInstr.h
+..\obj\stm32f4xx_exti.o: C:\Keil_v5\ARM\CMSIS\Include\core_cmFunc.h
+..\obj\stm32f4xx_exti.o: C:\Keil_v5\ARM\CMSIS\Include\core_cm4_simd.h
 ..\obj\stm32f4xx_exti.o: ..\ST_Libraries\startup\system_stm32f4xx.h
 ..\obj\stm32f4xx_exti.o: ..\user\stm32f4xx_conf.h
 ..\obj\stm32f4xx_exti.o: ..\ST_Libraries\inc\stm32f4xx_adc.h

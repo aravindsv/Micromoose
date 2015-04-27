@@ -1,11 +1,11 @@
 ..\obj\led.o: ..\user_Libraries\src\led.c
 ..\obj\led.o: ..\user_Libraries\inc\led.h
 ..\obj\led.o: ..\ST_Libraries\startup\stm32f4xx.h
-..\obj\led.o: C:\Keil\ARM\CMSIS\Include\core_cm4.h
-..\obj\led.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
-..\obj\led.o: C:\Keil\ARM\CMSIS\Include\core_cmInstr.h
-..\obj\led.o: C:\Keil\ARM\CMSIS\Include\core_cmFunc.h
-..\obj\led.o: C:\Keil\ARM\CMSIS\Include\core_cm4_simd.h
+..\obj\led.o: C:\Keil_v5\ARM\CMSIS\Include\core_cm4.h
+..\obj\led.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\led.o: C:\Keil_v5\ARM\CMSIS\Include\core_cmInstr.h
+..\obj\led.o: C:\Keil_v5\ARM\CMSIS\Include\core_cmFunc.h
+..\obj\led.o: C:\Keil_v5\ARM\CMSIS\Include\core_cm4_simd.h
 ..\obj\led.o: ..\ST_Libraries\startup\system_stm32f4xx.h
 ..\obj\led.o: ..\user\stm32f4xx_conf.h
 ..\obj\led.o: ..\ST_Libraries\inc\stm32f4xx_adc.h
