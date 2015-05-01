@@ -85,6 +85,7 @@ void readGyro(void)
 	aSpeed -= 92980000;
 	aSpeed /= 50000;	
 	aSpeed /= 4;
+	aSpeed -= 2; //aSpeed is 2 when the mouse is still. This is to account for that
 	angle += aSpeed; 
 }
 

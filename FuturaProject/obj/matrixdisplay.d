@@ -1,10 +1,10 @@
 ..\obj\matrixdisplay.o: ..\user_Libraries\src\matrixDisplay.c
 ..\obj\matrixdisplay.o: ..\ST_Libraries\startup\stm32f4xx.h
-..\obj\matrixdisplay.o: C:\Keil\ARM\CMSIS\Include\core_cm4.h
-..\obj\matrixdisplay.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
-..\obj\matrixdisplay.o: C:\Keil\ARM\CMSIS\Include\core_cmInstr.h
-..\obj\matrixdisplay.o: C:\Keil\ARM\CMSIS\Include\core_cmFunc.h
-..\obj\matrixdisplay.o: C:\Keil\ARM\CMSIS\Include\core_cm4_simd.h
+..\obj\matrixdisplay.o: C:\Keil_v5\ARM\CMSIS\Include\core_cm4.h
+..\obj\matrixdisplay.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\matrixdisplay.o: C:\Keil_v5\ARM\CMSIS\Include\core_cmInstr.h
+..\obj\matrixdisplay.o: C:\Keil_v5\ARM\CMSIS\Include\core_cmFunc.h
+..\obj\matrixdisplay.o: C:\Keil_v5\ARM\CMSIS\Include\core_cm4_simd.h
 ..\obj\matrixdisplay.o: ..\ST_Libraries\startup\system_stm32f4xx.h
 ..\obj\matrixdisplay.o: ..\user\stm32f4xx_conf.h
 ..\obj\matrixdisplay.o: ..\ST_Libraries\inc\stm32f4xx_adc.h
@@ -37,5 +37,5 @@
 ..\obj\matrixdisplay.o: ..\user_Libraries\inc\matrixDisplay.h
 ..\obj\matrixdisplay.o: ..\user_Libraries\inc\SPI.h
 ..\obj\matrixdisplay.o: ..\user_Libraries\inc\delay.h
-..\obj\matrixdisplay.o: C:\Keil\ARM\ARMCC\bin\..\include\stdbool.h
-..\obj\matrixdisplay.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h
+..\obj\matrixdisplay.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+..\obj\matrixdisplay.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h

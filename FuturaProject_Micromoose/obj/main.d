@@ -48,3 +48,4 @@
 ..\obj\main.o: ..\user_Libraries\inc\main.h
 ..\obj\main.o: ..\user_Libraries\inc\sensor_Function.h
 ..\obj\main.o: ..\user_Libraries\inc\adc.h
+..\obj\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

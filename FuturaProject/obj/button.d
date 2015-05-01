@@ -1,10 +1,10 @@
 ..\obj\button.o: ..\user_Libraries\src\button.c
 ..\obj\button.o: ..\ST_Libraries\startup\stm32f4xx.h
-..\obj\button.o: C:\Keil\ARM\CMSIS\Include\core_cm4.h
-..\obj\button.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
-..\obj\button.o: C:\Keil\ARM\CMSIS\Include\core_cmInstr.h
-..\obj\button.o: C:\Keil\ARM\CMSIS\Include\core_cmFunc.h
-..\obj\button.o: C:\Keil\ARM\CMSIS\Include\core_cm4_simd.h
+..\obj\button.o: C:\Keil_v5\ARM\CMSIS\Include\core_cm4.h
+..\obj\button.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\button.o: C:\Keil_v5\ARM\CMSIS\Include\core_cmInstr.h
+..\obj\button.o: C:\Keil_v5\ARM\CMSIS\Include\core_cmFunc.h
+..\obj\button.o: C:\Keil_v5\ARM\CMSIS\Include\core_cm4_simd.h
 ..\obj\button.o: ..\ST_Libraries\startup\system_stm32f4xx.h
 ..\obj\button.o: ..\user\stm32f4xx_conf.h
 ..\obj\button.o: ..\ST_Libraries\inc\stm32f4xx_adc.h

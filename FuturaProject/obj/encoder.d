@@ -1,10 +1,10 @@
 ..\obj\encoder.o: ..\user_Libraries\src\encoder.c
 ..\obj\encoder.o: ..\ST_Libraries\startup\stm32f4xx.h
-..\obj\encoder.o: C:\Keil\ARM\CMSIS\Include\core_cm4.h
-..\obj\encoder.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
-..\obj\encoder.o: C:\Keil\ARM\CMSIS\Include\core_cmInstr.h
-..\obj\encoder.o: C:\Keil\ARM\CMSIS\Include\core_cmFunc.h
-..\obj\encoder.o: C:\Keil\ARM\CMSIS\Include\core_cm4_simd.h
+..\obj\encoder.o: C:\Keil_v5\ARM\CMSIS\Include\core_cm4.h
+..\obj\encoder.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\encoder.o: C:\Keil_v5\ARM\CMSIS\Include\core_cmInstr.h
+..\obj\encoder.o: C:\Keil_v5\ARM\CMSIS\Include\core_cmFunc.h
+..\obj\encoder.o: C:\Keil_v5\ARM\CMSIS\Include\core_cm4_simd.h
 ..\obj\encoder.o: ..\ST_Libraries\startup\system_stm32f4xx.h
 ..\obj\encoder.o: ..\user\stm32f4xx_conf.h
 ..\obj\encoder.o: ..\ST_Libraries\inc\stm32f4xx_adc.h

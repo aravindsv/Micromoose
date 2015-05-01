@@ -1,11 +1,11 @@
 ..\obj\pwm.o: ..\user_Libraries\src\pwm.c
 ..\obj\pwm.o: ..\user_Libraries\inc\pwm.h
-..\obj\pwm.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
+..\obj\pwm.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\pwm.o: ..\ST_Libraries\startup\stm32f4xx.h
-..\obj\pwm.o: C:\Keil\ARM\CMSIS\Include\core_cm4.h
-..\obj\pwm.o: C:\Keil\ARM\CMSIS\Include\core_cmInstr.h
-..\obj\pwm.o: C:\Keil\ARM\CMSIS\Include\core_cmFunc.h
-..\obj\pwm.o: C:\Keil\ARM\CMSIS\Include\core_cm4_simd.h
+..\obj\pwm.o: C:\Keil_v5\ARM\CMSIS\Include\core_cm4.h
+..\obj\pwm.o: C:\Keil_v5\ARM\CMSIS\Include\core_cmInstr.h
+..\obj\pwm.o: C:\Keil_v5\ARM\CMSIS\Include\core_cmFunc.h
+..\obj\pwm.o: C:\Keil_v5\ARM\CMSIS\Include\core_cm4_simd.h
 ..\obj\pwm.o: ..\ST_Libraries\startup\system_stm32f4xx.h
 ..\obj\pwm.o: ..\user\stm32f4xx_conf.h
 ..\obj\pwm.o: ..\ST_Libraries\inc\stm32f4xx_adc.h

@@ -30,8 +30,10 @@
 #define RF_EM_OFF  GPIO_ResetBits(GPIOC, GPIO_Pin_1)
 #define LF_EM_ON   GPIO_SetBits(GPIOC, GPIO_Pin_7)
 #define LF_EM_OFF  GPIO_ResetBits(GPIOC, GPIO_Pin_7)
-#define SIDE_EM_ON   GPIO_SetBits(GPIOA, GPIO_Pin_7)
-#define SIDE_EM_OFF  GPIO_ResetBits(GPIOA, GPIO_Pin_7)
+#define SIDE_EM_ON   GPIO_SetBits(GPIOA, GPIO_Pin_7); \
+										 GPIO_SetBits(GPIOC, GPIO_Pin_2)
+#define SIDE_EM_OFF  GPIO_ResetBits(GPIOA, GPIO_Pin_7); \
+										 GPIO_ResetBits(GPIOC, GPIO_Pin_2)
 
 #define ALL_LED_OFF LED1_OFF; \
                     LED2_OFF; \

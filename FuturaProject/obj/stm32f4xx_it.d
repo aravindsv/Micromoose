@@ -1,11 +1,11 @@
 ..\obj\stm32f4xx_it.o: ..\user\stm32f4xx_it.c
 ..\obj\stm32f4xx_it.o: ..\user\stm32f4xx_it.h
 ..\obj\stm32f4xx_it.o: ..\ST_Libraries\startup\stm32f4xx.h
-..\obj\stm32f4xx_it.o: C:\Keil\ARM\CMSIS\Include\core_cm4.h
-..\obj\stm32f4xx_it.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
-..\obj\stm32f4xx_it.o: C:\Keil\ARM\CMSIS\Include\core_cmInstr.h
-..\obj\stm32f4xx_it.o: C:\Keil\ARM\CMSIS\Include\core_cmFunc.h
-..\obj\stm32f4xx_it.o: C:\Keil\ARM\CMSIS\Include\core_cm4_simd.h
+..\obj\stm32f4xx_it.o: C:\Keil_v5\ARM\CMSIS\Include\core_cm4.h
+..\obj\stm32f4xx_it.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\stm32f4xx_it.o: C:\Keil_v5\ARM\CMSIS\Include\core_cmInstr.h
+..\obj\stm32f4xx_it.o: C:\Keil_v5\ARM\CMSIS\Include\core_cmFunc.h
+..\obj\stm32f4xx_it.o: C:\Keil_v5\ARM\CMSIS\Include\core_cm4_simd.h
 ..\obj\stm32f4xx_it.o: ..\ST_Libraries\startup\system_stm32f4xx.h
 ..\obj\stm32f4xx_it.o: ..\user\stm32f4xx_conf.h
 ..\obj\stm32f4xx_it.o: ..\ST_Libraries\inc\stm32f4xx_adc.h
@@ -36,6 +36,6 @@
 ..\obj\stm32f4xx_it.o: ..\ST_Libraries\inc\stm32f4xx_wwdg.h
 ..\obj\stm32f4xx_it.o: ..\ST_Libraries\inc\misc.h
 ..\obj\stm32f4xx_it.o: ..\user_Libraries\inc\delay.h
-..\obj\stm32f4xx_it.o: C:\Keil\ARM\ARMCC\bin\..\include\stdbool.h
+..\obj\stm32f4xx_it.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 ..\obj\stm32f4xx_it.o: ..\user_Libraries\inc\buzzer.h
 ..\obj\stm32f4xx_it.o: ..\user_Libraries\inc\main.h

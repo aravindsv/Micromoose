@@ -1,10 +1,10 @@
 ..\obj\usart.o: ..\user_Libraries\src\usart.c
 ..\obj\usart.o: ..\ST_Libraries\startup\stm32f4xx.h
-..\obj\usart.o: C:\Keil\ARM\CMSIS\Include\core_cm4.h
-..\obj\usart.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
-..\obj\usart.o: C:\Keil\ARM\CMSIS\Include\core_cmInstr.h
-..\obj\usart.o: C:\Keil\ARM\CMSIS\Include\core_cmFunc.h
-..\obj\usart.o: C:\Keil\ARM\CMSIS\Include\core_cm4_simd.h
+..\obj\usart.o: C:\Keil_v5\ARM\CMSIS\Include\core_cm4.h
+..\obj\usart.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\usart.o: C:\Keil_v5\ARM\CMSIS\Include\core_cmInstr.h
+..\obj\usart.o: C:\Keil_v5\ARM\CMSIS\Include\core_cmFunc.h
+..\obj\usart.o: C:\Keil_v5\ARM\CMSIS\Include\core_cm4_simd.h
 ..\obj\usart.o: ..\ST_Libraries\startup\system_stm32f4xx.h
 ..\obj\usart.o: ..\user\stm32f4xx_conf.h
 ..\obj\usart.o: ..\ST_Libraries\inc\stm32f4xx_adc.h
@@ -34,8 +34,8 @@
 ..\obj\usart.o: ..\ST_Libraries\inc\stm32f4xx_usart.h
 ..\obj\usart.o: ..\ST_Libraries\inc\stm32f4xx_wwdg.h
 ..\obj\usart.o: ..\ST_Libraries\inc\misc.h
-..\obj\usart.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h
-..\obj\usart.o: C:\Keil\ARM\ARMCC\bin\..\include\string.h
+..\obj\usart.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\usart.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 ..\obj\usart.o: ..\user_Libraries\inc\usart.h
 ..\obj\usart.o: ..\user_Libraries\inc\delay.h
-..\obj\usart.o: C:\Keil\ARM\ARMCC\bin\..\include\stdbool.h
+..\obj\usart.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h

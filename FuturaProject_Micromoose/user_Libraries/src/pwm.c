@@ -137,11 +137,12 @@ void setLeftPwm(int32_t speed)
 
 void setRightPwm(int32_t speed)
 {
+	
 	if(speed > 999)
 		speed = 999;
 	if(speed < -999)
 		speed = -999;	
-	
+	speed = -speed;
     if(speed >= 0)//forward
     {
         R_PWM_F = speed;

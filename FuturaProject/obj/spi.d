@@ -1,10 +1,10 @@
 ..\obj\spi.o: ..\user_Libraries\src\SPI.c
 ..\obj\spi.o: ..\ST_Libraries\startup\stm32f4xx.h
-..\obj\spi.o: C:\Keil\ARM\CMSIS\Include\core_cm4.h
-..\obj\spi.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
-..\obj\spi.o: C:\Keil\ARM\CMSIS\Include\core_cmInstr.h
-..\obj\spi.o: C:\Keil\ARM\CMSIS\Include\core_cmFunc.h
-..\obj\spi.o: C:\Keil\ARM\CMSIS\Include\core_cm4_simd.h
+..\obj\spi.o: C:\Keil_v5\ARM\CMSIS\Include\core_cm4.h
+..\obj\spi.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\spi.o: C:\Keil_v5\ARM\CMSIS\Include\core_cmInstr.h
+..\obj\spi.o: C:\Keil_v5\ARM\CMSIS\Include\core_cmFunc.h
+..\obj\spi.o: C:\Keil_v5\ARM\CMSIS\Include\core_cm4_simd.h
 ..\obj\spi.o: ..\ST_Libraries\startup\system_stm32f4xx.h
 ..\obj\spi.o: ..\user\stm32f4xx_conf.h
 ..\obj\spi.o: ..\ST_Libraries\inc\stm32f4xx_adc.h
