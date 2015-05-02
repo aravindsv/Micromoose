@@ -242,9 +242,6 @@ int main(void) {
 	
 	
 	//shortBeep(2000, 8000);
-		readSensor();
-	readGyro();
-	readVolMeter();
 
 	/*forwardDistance(leftEncoderDeltaCell, 100, 100, false);
 	forwardDistance(leftEncoderDeltaCell, 100, 100, true);
@@ -252,19 +249,18 @@ int main(void) {
 	//turnDegrees(90, 1);
 	//goForward(0,0,0);
 	while(1) {
-		printf("Qhile loop\n");
-		goForward(0,0,0);	
-		/*
+		printf("Qhile loop\r\n");
+		//goForward(0,0,0);	
+		
 		readSensor();
 		readGyro();
 		readVolMeter();
 		printf("LF %d RF %d DL %d DR %d aSpeed %d angle %d voltage %d lenc %d renc %d\r\n", LFSensor, RFSensor, DLSensor, DRSensor, aSpeed, angle, voltage, getLeftEncCount(), getRightEncCount());
 		displayMatrix("mous");
 		
-		setLeftPwm(100);
-		setRightPwm(100);
-		delay_ms(1000);6
-		*/
+		//setLeftPwm(100);
+		//setRightPwm(100);
+		delay_ms(1000);
 	}
 
 }

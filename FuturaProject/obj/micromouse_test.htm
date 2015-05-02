@@ -3,7 +3,7 @@
 <title>Static Call Graph - [..\obj\micromouse_test.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\obj\micromouse_test.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5050106: Last Updated: Fri May 01 19:06:54 2015
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5050106: Last Updated: Fri May 01 19:33:14 2015
 <BR><P>
 <H3>Maximum Stack Usage =        320 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -293,8 +293,8 @@ Global Symbols
 <P><STRONG><a name="[167]"></a>__rt_entry_postsh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000009))
 
 <P><STRONG><a name="[82]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
-<BR><BR>[Stack]<UL><LI>Max Depth = 160 + Unknown Stack Size
-<LI>Call Chain = __rt_entry_main &rArr; main &rArr; goForward &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
+<BR><BR>[Stack]<UL><LI>Max Depth = 168 + Unknown Stack Size
+<LI>Call Chain = __rt_entry_main &rArr; main &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exit
@@ -1117,11 +1117,8 @@ Global Symbols
 <LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;turn90Left
 </UL>
 
-<P><STRONG><a name="[b2]"></a>goForward</STRONG> (Thumb, 64 bytes, Stack size 16 bytes, main.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 160 + Unknown Stack Size
-<LI>Call Chain = goForward &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
-</UL>
-<BR>[Calls]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+<P><STRONG><a name="[b2]"></a>goForward</STRONG> (Thumb, 64 bytes, Stack size 16 bytes, main.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 <LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setRightPwm
 <LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setLeftPwm
 <LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;displayMatrix
@@ -1129,7 +1126,6 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;turn90Right
 <LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;turn90Left
-<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
 <P><STRONG><a name="[b4]"></a>forwardDistance</STRONG> (Thumb, 74 bytes, Stack size 32 bytes, main.o(.text), UNUSED)
@@ -1200,16 +1196,19 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI15_10_IRQHandler
 </UL>
 
-<P><STRONG><a name="[83]"></a>main</STRONG> (Thumb, 72 bytes, Stack size 0 bytes, main.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 160 + Unknown Stack Size
-<LI>Call Chain = main &rArr; goForward &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
+<P><STRONG><a name="[83]"></a>main</STRONG> (Thumb, 136 bytes, Stack size 24 bytes, main.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 168 + Unknown Stack Size
+<LI>Call Chain = main &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;goForward
-<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+<BR>[Calls]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 <LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart1_Configuration
 <LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readVolMeter
 <LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readSensor
 <LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readGyro
+<LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getRightEncCount
+<LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getLeftEncCount
+<LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;displayMatrix
+<LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
 <LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;buzzer_Configuration
 <LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;button_Configuration
 <LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM4_PWM_Init
@@ -1304,6 +1303,7 @@ Global Symbols
 <LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;displayMatrixScroll
 <LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI15_10_IRQHandler
 <LI><a href="#[25]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI9_5_IRQHandler
+<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
 <P><STRONG><a name="[d2]"></a>delay_us</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, delay.o(.text), UNUSED)
@@ -1437,6 +1437,7 @@ Global Symbols
 <LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;displayInt
 <LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;displayFloat
 <LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;displayErr
+<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
 <P><STRONG><a name="[f2]"></a>displayErr</STRONG> (Thumb, 24 bytes, Stack size 16 bytes, matrixdisplay.o(.text), UNUSED)
@@ -1542,7 +1543,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[af]"></a>setLeftPwm</STRONG> (Thumb, 54 bytes, Stack size 0 bytes, pwm.o(.text))
+<P><STRONG><a name="[af]"></a>setLeftPwm</STRONG> (Thumb, 54 bytes, Stack size 0 bytes, pwm.o(.text), UNUSED)
 <BR><BR>[Called By]<UL><LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;turnDegrees
 <LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;turnLeft
 <LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;turnRight
@@ -1552,7 +1553,7 @@ Global Symbols
 <LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lowBatCheck
 </UL>
 
-<P><STRONG><a name="[b0]"></a>setRightPwm</STRONG> (Thumb, 56 bytes, Stack size 0 bytes, pwm.o(.text))
+<P><STRONG><a name="[b0]"></a>setRightPwm</STRONG> (Thumb, 56 bytes, Stack size 0 bytes, pwm.o(.text), UNUSED)
 <BR><BR>[Called By]<UL><LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;turnDegrees
 <LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;turnLeft
 <LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;turnRight
@@ -1597,7 +1598,8 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[c0]"></a>getRightEncCount</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, encoder.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;systick
+<BR><BR>[Called By]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;systick
 </UL>
 
 <P><STRONG><a name="[bb]"></a>resetRightEncCount</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, encoder.o(.text), UNUSED)
@@ -1606,7 +1608,8 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[bf]"></a>getLeftEncCount</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, encoder.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;systick
+<BR><BR>[Called By]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;systick
 </UL>
 
 <P><STRONG><a name="[bc]"></a>resetLeftEncCount</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, encoder.o(.text), UNUSED)
@@ -1660,9 +1663,9 @@ Global Symbols
 <LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;micros
 <LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readVolMeter
 </UL>
-<BR>[Called By]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;systick
-<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID
+<BR>[Called By]<UL><LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID
 <LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;systick
 </UL>
 
 <P><STRONG><a name="[b9]"></a>readGyro</STRONG> (Thumb, 124 bytes, Stack size 16 bytes, sensor_function.o(.text))
