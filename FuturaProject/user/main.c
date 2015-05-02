@@ -31,8 +31,8 @@ int rightBaseSpeed = 100;
 volatile int left_enc;
 volatile int right_enc;
 volatile int gyro;
-volatile int forward_left_pwm;
-volatile int forward_right_pwm;
+int forward_left_pwm=100;
+int forward_right_pwm=100;
 //NOT CONSTANTS
 int32_t errorP = 0;
 int32_t errorD = 0;
@@ -79,7 +79,9 @@ void PID(void)
 	oldErrorP = errorP;
 	forward_left_pwm = leftBaseSpeed - totalError;
 	forward_right_pwm = rightBaseSpeed + totalError;
-	
+	//printf("forward_left_pwm %d\t",forward_left_pwm);
+	//printf("forward_right_pwm %d\t\r\n",forward_right_pwm);
+	//printf("*************\r\n");
 //	setLeftPwm(leftBaseSpeed - totalError);
 //	setRightPwm(rightBaseSpeed + totalError);    
 }
@@ -93,7 +95,11 @@ void stop(int time)
 
 void goForward(int time, int left_pwm_speed,int right_pwm_speed) 
 {
-	displayMatrix("FOWD");
+	
+	displayMatrix("FWD");
+	printf("\nHELLO\n");
+		printf("gforward_left_pwm %d\t",forward_left_pwm);
+	printf("gforward_right_pwm %d\t\r\n",forward_right_pwm);
 	setLeftPwm(forward_left_pwm);
 	setRightPwm(forward_right_pwm);
 	delay_ms(time);
@@ -208,7 +214,7 @@ void turn90Right(int time, int left_pwm_speed,int right_pwm_speed)
 
 void systick(void) {
 		readSensor();
-	//	PID();
+	PID();
 		left_enc = getLeftEncCount();
 		right_enc = getRightEncCount();  
 		//gyro = angle;
@@ -239,15 +245,15 @@ int main(void) {
 		readSensor();
 	readGyro();
 	readVolMeter();
-	
-	delay_ms(1000);
+
 	/*forwardDistance(leftEncoderDeltaCell, 100, 100, false);
 	forwardDistance(leftEncoderDeltaCell, 100, 100, true);
 	forwardDistance(leftEncoderDeltaCell, 100, 100, false);*/
 	//turnDegrees(90, 1);
 	//goForward(0,0,0);
 	while(1) {
-			goForward(0,0,0);
+		printf("Qhile loop\n");
+		goForward(0,0,0);	
 		/*
 		readSensor();
 		readGyro();
