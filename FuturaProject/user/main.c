@@ -52,7 +52,7 @@ int leftEncoderDeltaCell = 4000;
 ///////////////////////////
 void PID(void) 
 {
-	readSensor();
+	//readSensor();
 	if((DLSensor > hasLeftWall && DRSensor > hasRightWall))//has both walls
 	{  //ccw direction is positive
 			errorP = DRSensor - DLSensor - 0;
@@ -79,11 +79,6 @@ void PID(void)
 	oldErrorP = errorP;
 	forward_left_pwm = leftBaseSpeed - totalError;
 	forward_right_pwm = rightBaseSpeed + totalError;
-	//printf("forward_left_pwm %d\t",forward_left_pwm);
-	//printf("forward_right_pwm %d\t\r\n",forward_right_pwm);
-	//printf("*************\r\n");
-//	setLeftPwm(leftBaseSpeed - totalError);
-//	setRightPwm(rightBaseSpeed + totalError);    
 }
 void stop(int time)
 {
@@ -95,13 +90,10 @@ void stop(int time)
 
 void goForward(int time, int left_pwm_speed,int right_pwm_speed) 
 {
-	
+	printf("LF %d RF %d DL %d DR %d aSpeed %d angle %d voltage %d lenc %d renc %d\r\n", LFSensor, RFSensor, DLSensor, DRSensor, aSpeed, angle, voltage, getLeftEncCount(), getRightEncCount());
 	displayMatrix("FWD");
-	printf("\nHELLO\n");
-		printf("gforward_left_pwm %d\t",forward_left_pwm);
-	printf("gforward_right_pwm %d\t\r\n",forward_right_pwm);
-	setLeftPwm(forward_left_pwm);
-	setRightPwm(forward_right_pwm);
+	//setLeftPwm(forward_left_pwm);
+	//setRightPwm(forward_right_pwm);
 	delay_ms(time);
 }
 
@@ -213,7 +205,7 @@ void turn90Right(int time, int left_pwm_speed,int right_pwm_speed)
 ///////////////////////////////////////////////////////////////////////////////////////
 
 void systick(void) {
-		readSensor();
+	readSensor();
 	PID();
 		left_enc = getLeftEncCount();
 		right_enc = getRightEncCount();  
@@ -248,19 +240,18 @@ int main(void) {
 	forwardDistance(leftEncoderDeltaCell, 100, 100, false);*/
 	//turnDegrees(90, 1);
 	//goForward(0,0,0);
+	//shortBeep(2000, 8000);
 	while(1) {
-		printf("Qhile loop\r\n");
-		//goForward(0,0,0);	
-		
-		readSensor();
 		readGyro();
 		readVolMeter();
-		printf("LF %d RF %d DL %d DR %d aSpeed %d angle %d voltage %d lenc %d renc %d\r\n", LFSensor, RFSensor, DLSensor, DRSensor, aSpeed, angle, voltage, getLeftEncCount(), getRightEncCount());
+	readSensor();
+	//	printf("LF %d RF %d DL %d DR %d aSpeed %d angle %d voltage %d lenc %d renc %d\r\n", LFSensor, RFSensor, DLSensor, DRSensor, aSpeed, angle, voltage, getLeftEncCount(), getRightEncCount());
+			printf("LF %d RF %d DL %d DR %d aSpeed %d angle %d voltage %d lenc %d renc %d\r\n", LFSensor, RFSensor, DLSensor, DRSensor, aSpeed, angle, voltage, getLeftEncCount(), getRightEncCount());
+
 		displayMatrix("mous");
-		
+		goForward(0,0,0);
 		//setLeftPwm(100);
 		//setRightPwm(100);
 		delay_ms(1000);
 	}
-
 }
