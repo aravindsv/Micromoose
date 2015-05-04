@@ -74,22 +74,24 @@ void PID(void)
 			errorP = 2 * (DRSensor - rightMiddleValue);
 			errorD = errorP - oldErrorP;
 	}
-	/*MIGHT USE FOR STOPPPING
+
 	else if((DLSensor < hasLeftWall && DRSensor <hasRightWall))//no wall, use encoder or gyro
 	{
 	//printf("None\r\n");
 			errorP = 0;//(leftEncoder – rightEncoder*1005/1000)*3;
 			errorD = 0;
-	}*/
+	}
 	totalError = P * errorP + D * errorD;
 	oldErrorP = errorP;
 	forward_left_pwm = leftBaseSpeed - totalError;
 	forward_right_pwm = rightBaseSpeed + totalError;
+		/*MIGHT USE FOR STOPPPING
 	if(LFSensor >= hasFrontWallLeft || RFSensor >= hasFrontWallRight)
 	{
 		forward_left_pwm = 0;
 		forward_right_pwm = 0;
 	}
+	*/
 }
 void stop(int time)
 {
