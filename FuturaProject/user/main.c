@@ -19,20 +19,21 @@
 ///////////////////////////
 
 //CONSTANTS
-int32_t hasLeftWall = 727;
-int32_t hasRightWall = 746;  
-int32_t hasFrontWall = 746;  
-int32_t leftMiddleValue = 1227;
-int rightMiddleValue = 2306;
-double P = .01;
-double D = .005;
+int32_t hasLeftWall = 200;
+int32_t hasRightWall = 800;  
+int32_t hasFrontWallLeft = 872; 
+int32_t hasFrontWallRight = 1600; 
+int32_t leftMiddleValue = 1445;
+int32_t rightMiddleValue = 1880;
+double P = 0.01;
+double D = 0.01;
 int leftBaseSpeed = 100;
 int rightBaseSpeed = 100;
 volatile int left_enc;
 volatile int right_enc;
 volatile int gyro;
-int forward_left_pwm=100;
-int forward_right_pwm=100;
+int forward_left_pwm=0;
+int forward_right_pwm=0;
 //NOT CONSTANTS
 int32_t errorP = 0;
 int32_t errorD = 0;
@@ -52,33 +53,43 @@ int leftEncoderDeltaCell = 4000;
 ///////////////////////////
 void PID(void) 
 {
-	//readSensor();
 	if((DLSensor > hasLeftWall && DRSensor > hasRightWall))//has both walls
-	{  //ccw direction is positive
-			errorP = DRSensor - DLSensor - 0;
-		//63 is the offset between left and right sensor when mouse in the middle of cell
+	{
+	//	printf("Both\r\n");
+		//ccw direction is positive
+		errorP = DRSensor - DLSensor - (rightMiddleValue - leftMiddleValue);
+		//rightMiddleValue - leftMiddleValue is the offset between left and right sensor when mouse in the middle of cell
 			errorD = errorP - oldErrorP;
 		//printf("%d", errorP);
 	}        
 	else if((DLSensor > hasLeftWall))//only has left wall
 	{
+	//	printf("L\r\n");
 			errorP = 2 * (leftMiddleValue - DLSensor);
 			errorD = errorP - oldErrorP;
 	}
 	else if((DRSensor > hasRightWall))//only has right wall
 	{
+		//printf("R\r\n");
 			errorP = 2 * (DRSensor - rightMiddleValue);
 			errorD = errorP - oldErrorP;
 	}
+	/*MIGHT USE FOR STOPPPING
 	else if((DLSensor < hasLeftWall && DRSensor <hasRightWall))//no wall, use encoder or gyro
 	{
+	//printf("None\r\n");
 			errorP = 0;//(leftEncoder – rightEncoder*1005/1000)*3;
 			errorD = 0;
-	}
+	}*/
 	totalError = P * errorP + D * errorD;
 	oldErrorP = errorP;
 	forward_left_pwm = leftBaseSpeed - totalError;
 	forward_right_pwm = rightBaseSpeed + totalError;
+	if(LFSensor >= hasFrontWallLeft || RFSensor >= hasFrontWallRight)
+	{
+		forward_left_pwm = 0;
+		forward_right_pwm = 0;
+	}
 }
 void stop(int time)
 {
@@ -90,10 +101,19 @@ void stop(int time)
 
 void goForward(int time, int left_pwm_speed,int right_pwm_speed) 
 {
-	printf("LF %d RF %d DL %d DR %d aSpeed %d angle %d voltage %d lenc %d renc %d\r\n", LFSensor, RFSensor, DLSensor, DRSensor, aSpeed, angle, voltage, getLeftEncCount(), getRightEncCount());
 	displayMatrix("FWD");
-	//setLeftPwm(forward_left_pwm);
-	//setRightPwm(forward_right_pwm);
+  setLeftPwm(forward_left_pwm);
+	setRightPwm(forward_right_pwm);
+	delay_ms(time);
+}
+
+void goForwardandStop(int time, int left_pwm_speed,int right_pwm_speed) 
+{
+	//printf("forward_left_pwm %d ,forward_right_pwm %d \r\n",forward_left_pwm,forward_right_pwm);
+
+	displayMatrix("FWD");
+  setLeftPwm(forward_left_pwm);
+	setRightPwm(forward_right_pwm);
 	delay_ms(time);
 }
 
@@ -241,15 +261,14 @@ int main(void) {
 	//turnDegrees(90, 1);
 	//goForward(0,0,0);
 	//shortBeep(2000, 8000);
+	//turn90Right(0,100,100);
 	while(1) {
 		readGyro();
 		readVolMeter();
-	readSensor();
+  	readSensor();
+		goForwardandStop(0,0,0);
+	//printf("LF %d RF %d DL %d DR %d\r\n", LFSensor, RFSensor, DLSensor, DRSensor);
 	//	printf("LF %d RF %d DL %d DR %d aSpeed %d angle %d voltage %d lenc %d renc %d\r\n", LFSensor, RFSensor, DLSensor, DRSensor, aSpeed, angle, voltage, getLeftEncCount(), getRightEncCount());
-			printf("LF %d RF %d DL %d DR %d aSpeed %d angle %d voltage %d lenc %d renc %d\r\n", LFSensor, RFSensor, DLSensor, DRSensor, aSpeed, angle, voltage, getLeftEncCount(), getRightEncCount());
-
-		displayMatrix("mous");
-		goForward(0,0,0);
 		//setLeftPwm(100);
 		//setRightPwm(100);
 		delay_ms(1000);
