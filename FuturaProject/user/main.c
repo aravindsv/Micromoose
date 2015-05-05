@@ -39,62 +39,38 @@
 
 
 //CONSTANTS
-
 int32_t hasLeftWall = 800;
-
 int32_t hasRightWall = 1300;  
-
 int32_t hasFrontWallLeft = 872; 
-
 int32_t hasFrontWallRight = 1600; 
-
-int32_t leftMiddleValue = 1445;
-
-int32_t rightMiddleValue = 1880;
+int32_t leftMiddleValue = 0;
+int32_t rightMiddleValue = 0;
 
 double P = 0.01;
-
 double D = 0.01;
-
 int leftBaseSpeed = 100;
-
 int rightBaseSpeed = 100;
-
 volatile int left_enc;
-
 volatile int right_enc;
-
 volatile int gyro;
-
 int forward_left_pwm=20;
-
 int forward_right_pwm=20;
 
 //NOT CONSTANTS
-
 int32_t errorP = 0;
-
 int32_t errorD = 0;
-
 double totalError = 0;
-
 int32_t oldErrorP = 0;
 
 //ENCODER CONSTANTS VARIABLES
-
 int rightEncoderDeltaCell = 5000;
-
 int leftEncoderDeltaCell = 4400;
-
 int targetLeft = 0;
-
 int targetRight = 0;
-
 const int LEFT = 1;
-
 const int RIGHT = -1;
-
 int turning = 0;
+int mouseStarted = 0;
 
 
 
@@ -125,95 +101,50 @@ void PID(void)
 	
 
 	if((DLSensor > hasLeftWall && DRSensor > hasRightWall))//has both walls
-
 	{
-
 	//	printf("Both\r\n");
-
-		//ccw direction is positive
-
+	//ccw direction is positive
 		errorP = DRSensor - DLSensor - (rightMiddleValue - leftMiddleValue);
-
 		//rightMiddleValue - leftMiddleValue is the offset between left and right sensor when mouse in the middle of cell
-
-			errorD = errorP - oldErrorP;
-
+		errorD = errorP - oldErrorP;
 		//printf("%d", errorP);
-
 	}        
-
 	else if((DLSensor > hasLeftWall))//only has left wall
-
 	{
-
 	//	printf("L\r\n");
-
-			errorP = 2 * (leftMiddleValue - DLSensor);
-
-			errorD = errorP - oldErrorP;
-
+		errorP = 2 * (leftMiddleValue - DLSensor);
+		errorD = errorP - oldErrorP;
 	}
-
 	else if((DRSensor > hasRightWall))//only has right wall
-
 	{
-
 		//printf("R\r\n");
-
-			errorP = 2 * (DRSensor - rightMiddleValue);
-
-			errorD = errorP - oldErrorP;
-
+		errorP = 2 * (DRSensor - rightMiddleValue);
+		errorD = errorP - oldErrorP;
 	}
-
-
 
 	else if((DLSensor < hasLeftWall && DRSensor <hasRightWall))//no wall, use encoder or gyro
-
 	{
-
 	//printf("None\r\n");
-
-			errorP = 0;//(leftEncoder – rightEncoder*1005/1000)*3;
-
-			errorD = 0;
-
+		errorP = 0;//(leftEncoder – rightEncoder*1005/1000)*3;
+		errorD = 0;
 	}
-
 	forward_left_pwm = targetLeft;
-
 	forward_right_pwm = targetRight;
-
 	if (turning == 0) {
-
 		totalError = P * errorP + D * errorD;
-
 		oldErrorP = errorP;
-
 		forward_left_pwm -= totalError;
-
 		forward_right_pwm += totalError;
-
 	}
-
 	setLeftPwm(forward_left_pwm);
-
 	setRightPwm(forward_right_pwm);
-
 		/*MIGHT USE FOR STOPPPING
-
 	if(LFSensor >= hasFrontWallLeft || RFSensor >= hasFrontWallRight)
-
 	{
-
 		forward_left_pwm = 0;
-
 		forward_right_pwm = 0;
-
 	}
-
 	*/
-
 }
 
 void stop(int time)
@@ -576,22 +507,14 @@ void turnRightAngleLeft(int leftSpeed, int rightSpeed) {
 
 void systick(void) {
 
-	
-
-	readGyro();
-
-	readVolMeter();
-
-	readSensor();
-
-	PID();
-
-	left_enc = getLeftEncCount();
-
-	right_enc = getRightEncCount();  
-
-		//gyro = angle;
-
+	if (mouseStarted == 1) {
+		readGyro();
+		readVolMeter();
+		readSensor();
+		PID();
+		left_enc = getLeftEncCount();
+		right_enc = getRightEncCount();  
+	}
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////
@@ -617,182 +540,94 @@ void button2_interrupt(void) {
 int main(void) {
 
 	int runSpeed = 50;
-
+	int i;
 	Systick_Configuration();
-
 	LED_Configuration();
-
 	button_Configuration();
-
 	usart1_Configuration(9600);
-
 	SPI_Configuration();
-
   TIM4_PWM_Init();
-
 	Encoder_Configration();
-
 	buzzer_Configuration();
-
 	ADC_Config();
-
 	
-
-	
-
 	//shortBeep(2000, 8000);
 
 	stop(1000);
+	
+	
+	displayMatrix("CALB");
+	for (i = 0; i < 1000; i++) {
+		readSensor();
+		leftMiddleValue += DLSensor;
+		rightMiddleValue += DRSensor;
+	}
+	leftMiddleValue /= 1000;
+	rightMiddleValue /= 1000;
+	hasLeftWall = leftMiddleValue * 0.75;
+	hasRightWall = rightMiddleValue * 0.75;
 
-	/*forwardDistance(leftEncoderDeltaCell, 100, 100, false);
-
-	forwardDistance(leftEncoderDeltaCell, 100, 100, true);
-
-	forwardDistance(leftEncoderDeltaCell, 100, 100, false);*/
-
-	//turnDegrees(90, 1);
-
-	//goForward(0,0,0);
-
-	//shortBeep(2000, 8000);
-
-	//turn90Right(0,100,100);
-
-	/*while(1) {
-
-		//readGyro();
-
-		//readVolMeter();
-
-  	//readSensor();
-
-		forwardDistance(leftEncoderDeltaCell, 50, 50, true);
-
-		forwardDistance(leftEncoderDeltaCell, 50, 50, true);
-
-		forwardDistance(leftEncoderDeltaCell, 50, 50, true);
-
-		forwardDistance(leftEncoderDeltaCell, 50, 50, false);
-
+	if (0) {
+		mouseStarted = 1;
+		forwardDistance(leftEncoderDeltaCell, runSpeed, runSpeed, true);
+		forwardDistance(leftEncoderDeltaCell, runSpeed, runSpeed, true);
+		forwardDistance(leftEncoderDeltaCell, runSpeed, runSpeed, true);
+		forwardDistance(leftEncoderDeltaCell, runSpeed, runSpeed, true);
+		forwardDistance(leftEncoderDeltaCell, runSpeed, runSpeed, false);
 		stop(1000);
-
-		turnRightAngleRight(50, 50);
-
+		turnRightAngleLeft(runSpeed, runSpeed);
 		stop(1000);
-
-		turnRightAngleRight(100, 100);
-
+		forwardDistance(leftEncoderDeltaCell, runSpeed, runSpeed, false);
 		stop(1000);
-
-		forwardDistance(leftEncoderDeltaCell, 50, 50, true);
-
-		forwardDistance(leftEncoderDeltaCell, 50, 50, true);
-
-		forwardDistance(leftEncoderDeltaCell, 50, 50, true);
-
-		forwardDistance(leftEncoderDeltaCell, 50, 50, false);
-
+		turnRightAngleLeft(runSpeed, runSpeed);
 		stop(1000);
-
-		turnRightAngleLeft(50, 50);
-
+		forwardDistance(leftEncoderDeltaCell, runSpeed, runSpeed, true);
+		forwardDistance(leftEncoderDeltaCell, runSpeed, runSpeed, false);
 		stop(1000);
-
-		turnRightAngleLeft(100, 100);
-
+		turnRightAngleRight(runSpeed, runSpeed);
 		stop(1000);
-
-	//printf("LF %d RF %d DL %d DR %d\r\n", LFSensor, RFSensor, DLSensor, DRSensor);
-
-		printf("LF %d RF %d DL %d DR %d aSpeed %d angle %d voltage %d lenc %d renc %d\r\n", LFSensor, RFSensor, DLSensor, DRSensor, aSpeed, angle, voltage, getLeftEncCount(), getRightEncCount());
-
-		//setLeftPwm(100);
-
-		//setRightPwm(100);
-
-	}*/
-
-	if (1) {
-
-	forwardDistance(leftEncoderDeltaCell, runSpeed, runSpeed, true);
-
-	forwardDistance(leftEncoderDeltaCell, runSpeed, runSpeed, true);
-
-	forwardDistance(leftEncoderDeltaCell, runSpeed, runSpeed, true);
-
-	forwardDistance(leftEncoderDeltaCell, runSpeed, runSpeed, true);
-
-	forwardDistance(leftEncoderDeltaCell, runSpeed, runSpeed, true);
-
-	stop(1000);
-
-	turnRightAngleLeft(runSpeed, runSpeed);
-
-	stop(1000);
-
-	forwardDistance(leftEncoderDeltaCell, runSpeed, runSpeed, true);
-
-	stop(1000);
-
-	turnRightAngleLeft(runSpeed, runSpeed);
-
-	stop(1000);
-
-	forwardDistance(leftEncoderDeltaCell, runSpeed, runSpeed, true);
-
-	forwardDistance(leftEncoderDeltaCell, runSpeed, runSpeed, true);
-
-	stop(1000);
-
-	turnRightAngleLeft(runSpeed, runSpeed);
-
-	stop(1000);
-
-	forwardDistance(leftEncoderDeltaCell, runSpeed, runSpeed, true);
-
-	stop(1000);
-
-	turnRightAngleLeft(runSpeed, runSpeed);
-
-	stop(1000);
-
-	forwardDistance(leftEncoderDeltaCell, runSpeed, runSpeed, true);
-
-	stop(1000);
-
-	turnRightAngleRight(runSpeed, runSpeed);
-
-	stop(1000);
-
-	forwardDistance(leftEncoderDeltaCell, runSpeed, runSpeed, true);
-
-	stop(1000);
-
-	turnRightAngleRight(runSpeed, runSpeed);
-
-	stop(1000);
-
-	forwardDistance(leftEncoderDeltaCell, runSpeed, runSpeed, true);
-
-	stop(1000);
-
-	turnRightAngleLeft(runSpeed, runSpeed);
-
-	stop(1000);
-
-	forwardDistance(leftEncoderDeltaCell, runSpeed, runSpeed, true);
-
-	stop(10000);
+		forwardDistance(leftEncoderDeltaCell, runSpeed, runSpeed, false);
+		stop(1000);
+		turnRightAngleRight(runSpeed, runSpeed);
+		stop(1000);
+		forwardDistance(leftEncoderDeltaCell, runSpeed, runSpeed, false);
+		stop(1000);
+		turnRightAngleLeft(runSpeed, runSpeed);
+		stop(1000);
+		forwardDistance(leftEncoderDeltaCell, runSpeed, runSpeed, false);
+		stop(1000);
+		turnRightAngleRight(runSpeed, runSpeed);
+		stop(1000);
+		forwardDistance(leftEncoderDeltaCell, runSpeed, runSpeed, false);
+		stop(1000);
+		turnRightAngleLeft(runSpeed, runSpeed);
+		stop(1000);
+		forwardDistance(leftEncoderDeltaCell, runSpeed, runSpeed, false);
+		stop(10000);
 
 	}
-
-	
-
-	/*while(1) {
-
-		printf("LF %d RF %d DL %d DR %d aSpeed %d angle %d voltage %d lenc %d renc %d\r\n", LFSensor, RFSensor, DLSensor, DRSensor, aSpeed, angle, voltage, getLeftEncCount(), getRightEncCount());
-
-	}*/
+	else {
+		while (1) {
+			readSensor();
+			if((DLSensor > hasLeftWall && DRSensor > hasRightWall))//has both walls
+			{
+				displayMatrix("BOTH");
+			}        
+			else if((DLSensor > hasLeftWall))//only has left wall
+			{
+				displayMatrix("LWAL");
+			}
+			else if((DRSensor > hasRightWall))//only has right wall
+			{
+				displayMatrix("RWAL");
+			}
+			else if((DLSensor < hasLeftWall && DRSensor <hasRightWall))//no wall, use encoder or gyro
+			{
+				displayMatrix("NONE");
+			}		
+			delay_ms(500);
+		}
+	}
 
 }
 
