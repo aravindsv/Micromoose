@@ -867,11 +867,11 @@ ARM Macro Assembler    Page 14
               00000400 
               00000200 
               00000000 
-Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4.fp --apcs=int
-erwork --depend=.\startup_stm32f4xx.d -o.\startup_stm32f4xx.o -IC:\Keil_v5\ARM\
-RV31\INC -IC:\Keil_v5\ARM\CMSIS\Include -IC:\Keil_v5\ARM\Inc\ST\STM32F4xx --pre
-define="__EVAL SETA 1" --predefine="__UVISION_VERSION SETA 514" --list=.\startu
-p_stm32f4xx.lst ..\ST_Libraries\startup\startup_stm32f4xx.s
+Command Line: --debug --xref --cpu=Cortex-M4.fp --apcs=interwork --depend=..\ob
+j\startup_stm32f4xx.d -o..\obj\startup_stm32f4xx.o -IC:\Keil_v5\ARM\RV31\INC -I
+C:\Keil_v5\ARM\CMSIS\Include -IC:\Keil_v5\ARM\Inc\ST\STM32F4xx --predefine="__E
+VAL SETA 1" --predefine="__UVISION_VERSION SETA 513" --list=.\startup_stm32f4xx
+.lst ..\ST_Libraries\startup\startup_stm32f4xx.s
 
 
 

@@ -137,7 +137,6 @@ void setLeftPwm(int32_t speed)
 
 void setRightPwm(int32_t speed)
 {
-	
 	if(speed > 999)
 		speed = 999;
 	if(speed < -999)

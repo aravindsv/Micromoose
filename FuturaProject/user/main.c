@@ -567,7 +567,7 @@ int main(void) {
 	hasLeftWall = leftMiddleValue * 0.75;
 	hasRightWall = rightMiddleValue * 0.75;
 
-	if (0) {
+	if (1) {
 		mouseStarted = 1;
 		forwardDistance(leftEncoderDeltaCell, runSpeed, runSpeed, true);
 		forwardDistance(leftEncoderDeltaCell, runSpeed, runSpeed, true);

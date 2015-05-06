@@ -3,7 +3,7 @@
 <title>Static Call Graph - [..\obj\micromouse_test.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\obj\micromouse_test.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5050106: Last Updated: Mon May 04 22:15:22 2015
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5050106: Last Updated: Wed May 06 16:47:05 2015
 <BR><P>
 <H3>Maximum Stack Usage =        320 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -293,7 +293,7 @@ Global Symbols
 <P><STRONG><a name="[16a]"></a>__rt_entry_postsh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000009))
 
 <P><STRONG><a name="[82]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
-<BR><BR>[Stack]<UL><LI>Max Depth = 116 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 140 + Unknown Stack Size
 <LI>Call Chain = __rt_entry_main &rArr; main &rArr; usart1_Configuration &rArr; USART_Init &rArr; RCC_GetClocksFreq
 </UL>
 <BR>[Calls]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -1187,7 +1187,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[be]"></a>systick</STRONG> (Thumb, 36 bytes, Stack size 8 bytes, main.o(.text))
+<P><STRONG><a name="[be]"></a>systick</STRONG> (Thumb, 44 bytes, Stack size 8 bytes, main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = systick &rArr; PID &rArr; __aeabi_dmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readVolMeter
@@ -1208,10 +1208,12 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI15_10_IRQHandler
 </UL>
 
-<P><STRONG><a name="[83]"></a>main</STRONG> (Thumb, 422 bytes, Stack size 8 bytes, main.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 116<LI>Call Chain = main &rArr; usart1_Configuration &rArr; USART_Init &rArr; RCC_GetClocksFreq
+<P><STRONG><a name="[83]"></a>main</STRONG> (Thumb, 582 bytes, Stack size 32 bytes, main.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 140<LI>Call Chain = main &rArr; usart1_Configuration &rArr; USART_Init &rArr; RCC_GetClocksFreq
 </UL>
 <BR>[Calls]<UL><LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart1_Configuration
+<LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readSensor
+<LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;displayMatrix
 <LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;buzzer_Configuration
 <LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;button_Configuration
 <LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM4_PWM_Init
@@ -1224,6 +1226,9 @@ Global Symbols
 <LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;turnRightAngleRight
 <LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;forwardDistance
 <LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;stop
+<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
+<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
+<LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2iz
 </UL>
 <BR>[Called By]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
 </UL>
@@ -1435,7 +1440,8 @@ Global Symbols
 <LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
 <LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
 </UL>
-<BR>[Called By]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;turnRightAngleLeft
+<BR>[Called By]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;turnRightAngleLeft
 <LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;turnRightAngleRight
 <LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;turn90Right
 <LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;turn90Left
@@ -1667,7 +1673,8 @@ Global Symbols
 <LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;elapseMicros
 <LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;micros
 </UL>
-<BR>[Called By]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;systick
+<BR>[Called By]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;systick
 </UL>
 
 <P><STRONG><a name="[bf]"></a>readGyro</STRONG> (Thumb, 124 bytes, Stack size 16 bytes, sensor_function.o(.text))
@@ -2330,7 +2337,8 @@ Global Symbols
 <P><STRONG><a name="[ab]"></a>__aeabi_d2iz</STRONG> (Thumb, 0 bytes, Stack size 32 bytes, dfix.o(x$fpl$dfix))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = __aeabi_d2iz
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID
+<BR>[Called By]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID
 </UL>
 
 <P><STRONG><a name="[145]"></a>_dfix</STRONG> (Thumb, 94 bytes, Stack size 32 bytes, dfix.o(x$fpl$dfix), UNUSED)
@@ -2338,7 +2346,8 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[a7]"></a>__aeabi_i2d</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, dflt_clz.o(x$fpl$dflt))
-<BR><BR>[Called By]<UL><LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID
+<BR><BR>[Called By]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID
 </UL>
 
 <P><STRONG><a name="[231]"></a>_dflt</STRONG> (Thumb, 46 bytes, Stack size 0 bytes, dflt_clz.o(x$fpl$dflt), UNUSED)
@@ -2346,7 +2355,8 @@ Global Symbols
 <P><STRONG><a name="[a8]"></a>__aeabi_dmul</STRONG> (Thumb, 0 bytes, Stack size 32 bytes, dmul.o(x$fpl$dmul))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = __aeabi_dmul
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID
+<BR>[Called By]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID
 </UL>
 
 <P><STRONG><a name="[146]"></a>_dmul</STRONG> (Thumb, 332 bytes, Stack size 32 bytes, dmul.o(x$fpl$dmul), UNUSED)
