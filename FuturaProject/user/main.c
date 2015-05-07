@@ -57,7 +57,7 @@ int leftBaseSpeed = 100;
 int rightBaseSpeed = 100;
 volatile int left_enc;
 volatile int right_enc;
-volatile int gyro;
+volatile int cur_angle;
 int forward_left_pwm=20;
 int forward_right_pwm=20;
 
@@ -775,10 +775,21 @@ void turnLeft(int time, int left_pwm_speed,int right_pwm_speed)
 void turnDegrees(int degrees, int direction) {
 	int curAng;
 	curAng = angle;
-	while (angle-curAng < degrees) {
-		printf("angle: %d\tcurAngle: %d\tangle-curAngle: %d\r\n", angle, curAng, angle-curAng); 
-		targetLeft = -50*direction;
-		targetRight = 50*direction;
+	if(direction == 1)
+	{
+		while (angle-curAng < degrees) {
+			printf("angle: %d\tcurAngle: %d\tangle-curAngle: %d\r\n", angle, curAng, angle-curAng); 
+			targetLeft = -50*direction;
+			targetRight = 50*direction;
+		}
+	}
+	else if(direction == -1)
+	{
+			while (angle-curAng > degrees) {
+			printf("angle: %d\tcurAngle: %d\tangle-curAngle: %d\r\n", angle, curAng, angle-curAng); 
+			targetLeft = -50*direction;
+			targetRight = 50*direction;
+		}
 	}
 
 	targetLeft = 0;
@@ -852,27 +863,14 @@ void turn90Right(int left_pwm_speed,int right_pwm_speed)
 	turning = 1;
 
 	while(left_enc< 1200 || right_enc> -1200)
-
 	{
-
 		turnRight(0,60,60);
-
 		//printf("lenc %d renc %d\r\n", left_enc, right_enc);
-
 	}
-
-
-
   //reset the global variables.
-
 	turning = 0;	
-
 	targetLeft = 0;
-
 	targetRight = 0;
-
-
-
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////
@@ -1037,11 +1035,12 @@ int main(void) {
 		turnRightAngleLeft(runSpeed, runSpeed);
 		stop(1000);
 		forwardDistance(leftEncoderDeltaCell, runSpeed, runSpeed, false);
+		stop(1000);
+		turnDegrees(-15000, -1);//turn right
 		stop(10000);
-
 	}
 	else {
-		while (1) {
+		while (1) {		
 			readSensor();
 			if((DLSensor > hasLeftWall && DRSensor > hasRightWall))//has both walls
 			{
