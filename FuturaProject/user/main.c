@@ -1001,7 +1001,16 @@ int main(void) {
 
 	if (1) {
 		mouseStarted = 1;
-		forwardDistance(leftEncoderDeltaCell, runSpeed, runSpeed, true);
+		
+		while (1) {
+			//forwardDistance(leftEncoderDeltaCell, runSpeed, runSpeed, true);
+			stop(1000);
+			
+			printf("LF %d RF %d DL %d DR %d aSpeed %d angle %d voltage %d lenc %d renc %d\r\n", LFSensor, RFSensor, DLSensor, DRSensor, aSpeed, angle, voltage, getLeftEncCount(), getRightEncCount());
+		}
+		
+		
+		/*
 		forwardDistance(leftEncoderDeltaCell, runSpeed, runSpeed, true);
 		forwardDistance(leftEncoderDeltaCell, runSpeed, runSpeed, true);
 		forwardDistance(leftEncoderDeltaCell, runSpeed, runSpeed, true);
@@ -1038,9 +1047,118 @@ int main(void) {
 		stop(1000);
 		turnDegrees(-15000, -1);//turn right
 		stop(10000);
+		
+		*/
 	}
 	else {
+		
+		mouseStarted = 1;
+		
 		while (1) {		
+			
+			//Set the direction to turn
+				if((DLSensor > hasLeftWall)) {
+					leftWall = true;
+				} else {
+					leftWall = false;
+				}
+				
+				if((DRSensor > hasRightWall)) {
+					rightWall = true;
+				} else {
+					rightWall = false;
+				}
+				
+				if((LFSensor > hasFrontWallLeft || RFSensor > hasFrontWallRight)) {
+					frontWall = true;
+				} else {
+					frontWall = false;
+				}
+				
+				switch (nextMovement()) {
+					case MoveForward: 
+						switch(heading) {
+							case NORTH:
+							y++;
+							break;
+						case SOUTH:
+							y--;
+							break;
+						case EAST:
+							x++;
+							break;
+						case WEST:
+							x--;
+							break;
+						case INVALID:
+						default:
+							break;
+				}
+						
+				forwardDistance(leftEncoderDeltaCell, runSpeed, runSpeed, true);
+						
+						break;
+					case TurnClockwise:
+						
+					heading = clockwise(heading);
+						switch(heading) {
+							case NORTH:
+							y++;
+							break;
+						case SOUTH:
+							y--;
+							break;
+						case EAST:
+							x++;
+							break;
+						case WEST:
+							x--;
+							break;
+						case INVALID:
+						default:
+							break;
+						}	
+						
+						turnRightAngleLeft(runSpeed, runSpeed);
+						
+
+						break;
+					
+					case TurnCounterClockwise:
+						heading = counterClockwise(heading);
+						switch(heading) {
+							case NORTH:
+							y++;
+							break;
+						case SOUTH:
+							y--;
+							break;
+						case EAST:
+							x++;
+							break;
+						case WEST:
+							x--;
+							break;
+						case INVALID:
+						default:
+							break;
+						}	
+						
+						turnRightAngleLeft(runSpeed, runSpeed);
+						
+						
+						
+					
+						break;
+					case TurnAround:
+						heading = opposite(heading);
+					
+					
+						break; 
+				
+				}
+
+			/*
 			readSensor();
 			if((DLSensor > hasLeftWall && DRSensor > hasRightWall))//has both walls
 			{
@@ -1059,6 +1177,8 @@ int main(void) {
 				displayMatrix("NONE");
 			}		
 			delay_ms(500);
+			
+			*/
 		}
 	}
 
