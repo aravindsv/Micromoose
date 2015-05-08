@@ -1009,9 +1009,12 @@ int main(void) {
 	if (0) {
 		mouseStarted = 1;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	forwardDistance(leftEncoderDeltaCell, runSpeed, runSpeed, true);
 	//		forwardDistance(leftEncoderDeltaCell, runSpeed, runSpeed, false);
 =======
+=======
+>>>>>>> origin/master
 		
 		while (1) {
 			//forwardDistance(leftEncoderDeltaCell, runSpeed, runSpeed, true);
@@ -1021,6 +1024,9 @@ int main(void) {
 		}
 		
 		
+<<<<<<< HEAD
+>>>>>>> origin/master
+=======
 >>>>>>> origin/master
 		/*
 		forwardDistance(leftEncoderDeltaCell, runSpeed, runSpeed, true);
@@ -1064,6 +1070,9 @@ int main(void) {
 		stop(10000);
 		
 		*/
+<<<<<<< HEAD
+>>>>>>> origin/master
+=======
 >>>>>>> origin/master
 	}
 	else {
